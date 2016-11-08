@@ -1,0 +1,9 @@
+name: TutorialPlugin
+main: com.github.fukuken1300.tutorialplugin.TutorialPlugin
+version: 0.0.1
+commands:
+   basic:
+      description: This is a demo command.
+      usage: /<command> [player]
+      permission: tutorialplugin.basic
+      permission-message: You don't have <permission>
