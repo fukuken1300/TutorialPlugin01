@@ -33,10 +33,15 @@ public class TutorialPlugin extends JavaPlugin {
 	    	       World world=Bukkit.getWorld("world");
 	    	       Location loc=player.getLocation();
 
-	            	Block block=world.getBlockAt((int)loc.getX(),(int)loc.getY(),(int)loc.getZ());
-	            	Block shower = block.getRelative(BlockFace.UP, 2);
-	            	 shower.setType(Material.STONE);
-
+	    	       for(int c=-1; c<=1; c++){
+	    	    	   for(int b=-1; b<=1; b++){
+	    	    		   Block block=world.getBlockAt((int)loc.getX()+(b),(int)loc.getY()-1,(int)loc.getZ()+(c));
+	    	    		   for(int a=0; a<5;a++){
+	    	    			   Block shower = block.getRelative(BlockFace.UP, a);
+	    	    			   shower.setType(Material.STONE);
+	    	    		   }
+	    	    	   }
+	    	       }
 
 	            }
 
