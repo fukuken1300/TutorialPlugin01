@@ -27,18 +27,22 @@ public class TutorialPlugin extends JavaPlugin {
 	    public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args){
 	        if (sender instanceof Player) {
 	            Player player = (Player) sender;
-	            if (cmd.getName().equalsIgnoreCase("upstone")) {
+	            if (cmd.getName().equalsIgnoreCase("upstone")) { 				//"/upstone"と入力したら
 	            	sender.sendMessage("ナイス!");
-	            	player.getLocation();
+	            	player.getLocation();										//位置座標が読み込まれる
 	    	       World world=Bukkit.getWorld("world");
-	    	       Location loc=player.getLocation();
+	    	       Location loc=player.getLocation();							//位置座標をlocに格納
 
+	    	       //石柱製造
 	    	       for(int c=-1; c<=1; c++){
 	    	    	   for(int b=-1; b<=1; b++){
 	    	    		   Block block=world.getBlockAt((int)loc.getX()+(b),(int)loc.getY()-1,(int)loc.getZ()+(c));
-	    	    		   for(int a=0; a<5;a++){
-	    	    			   Block shower = block.getRelative(BlockFace.UP, a);
-	    	    			   shower.setType(Material.STONE);
+	    	    		   for(int a=0; a<4;a++){
+	    	    			   for(BlockFace face:BlockFace.values()){				//説明等
+	    	    				   sender.sendMessage("あなたは石で囲まれました");
+	    	    			   }
+	    	    			   Block shower = block.getRelative(BlockFace.UP, a);		//a回上に上がったところにブロックを置く
+	    	    			   shower.setType(Material.STONE);							//石ブロックを置く
 	    	    		   }
 	    	    	   }
 	    	       }
@@ -52,3 +56,13 @@ public class TutorialPlugin extends JavaPlugin {
 	        }
 	    }
 }
+/*答え
+ * for(int y=0; y<=1; y++){
+    				   for(BlockFace face:BlockFace.values()){
+    					   Block block=player.getLocation().add(0,y,0).getBlock.getRelative(face);
+
+    					   if(block.equals(player.getLocation().getBlock()||k())
+    							   continue;
+    					   block.setType(Material.STONE);
+    				   }
+    			   }*/
